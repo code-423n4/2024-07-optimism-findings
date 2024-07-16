@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "Femboys",
+  "risk": "3",
+  "title": "Large preimage proposal can be forged by bypassing challenge period",
+  "issueId": 3,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/3"
+}
