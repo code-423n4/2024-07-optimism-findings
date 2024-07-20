@@ -19,7 +19,7 @@ For the `add`, `addi`, `sub` instructions which perform signed arithmetic, the M
 ```
 As seen in the above snippets, the MIPS VM performs unsigned arithmetic for signed arithmetic instructions where the overflow does not lead to an exception. For example, consider the following: 0b0100 + 0b0100,
 
-Performing unsigned addition will lead to a result 0b1000, but according to MIPS specification, the signed addition will throw an exception for this result because the sign bit is 0 for both operands while the sign bit is 1 for the result. The only impact of this is that it deviates from the MIPS specification.
+Performing unsigned addition will lead to a result 0b1000, but according to MIPS specification, the signed addition will throw an exception for this result because the sign bit is 0 for both operands while the sign bit is 1 for the result. The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same deviation.
 
 ## [QA-02]: The new `CLOCK_EXTENSION` feature can be abused to extend the dispute game above 7 days.
 
