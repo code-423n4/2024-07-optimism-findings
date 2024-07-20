@@ -1,4 +1,27 @@
-## [L-01]: The new `CLOCK_EXTENSION` feature can be abused to extend the dispute game above 7 days.
+## [QA-01]: The MIPS VM do not handle overflow exceptions for signed arithmetic `add`, `addi`, `sub` instructions which deviates from MIPS spec.
+
+For the `add`, `addi`, `sub` instructions which perform signed arithmetic, the MIPS  VM do not handle signed overflows appropriately. A signed overflow occurs when:
+
+1) The sign bit of the operands are the same AND
+2) The sign bit of the result is different from the operands
+
+```solidity
+                // add
+                else if (func == 0x20) {
+                    return (rs + rt);
+                }
+```
+```solidity
+                // sub
+                else if (func == 0x22) {
+                    return (rs - rt);
+                }
+```
+As seen in the above snippets, the MIPS VM performs unsigned arithmetic for signed arithmetic instructions where the overflow does not lead to an exception. For example, consider the following: 0b0100 + 0b0100,
+
+Performing unsigned addition will lead to a result 0b1000, but according to MIPS specification, the signed addition will throw an exception for this result because the sign bit is 0 for both operands while the sign bit is 1 for the result. The only impact of this is that it deviates from the MIPS specification.
+
+## [QA-02]: The new `CLOCK_EXTENSION` feature can be abused to extend the dispute game above 7 days.
 
 The `CLOCK_EXTENSION` feature is a newly added feature that extends the remaining time left of a team to 3 hours if they have less than 3 hours left on the clock. 
 
