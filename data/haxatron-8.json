@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "haxatron",
+  "risk": "2",
+  "title": "MIPS: `sc` does not write a 0 to `rt` if the write is non-atomic",
+  "issueId": 8,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/8"
+}
