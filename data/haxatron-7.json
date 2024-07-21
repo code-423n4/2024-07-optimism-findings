@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "haxatron",
+  "risk": "3",
+  "title": "MIPS: The `rtReg` will be incorrectly overwritten for store instructions (`opcode >= 0x28`)",
+  "issueId": 7,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/7"
+}
