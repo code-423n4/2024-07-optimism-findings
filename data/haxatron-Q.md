@@ -23,11 +23,11 @@ As seen in the above snippets, the MIPS VM performs unsigned arithmetic for sign
 
 Performing unsigned addition will lead to a result 0b1000, but according to MIPS specification - please check the relevant information on the MIPS ISA opcodes in [link](https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf), the signed addition will throw an exception for this result because the sign bit is 0 for both operands while the sign bit is 1 for the result. The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
 
-## [MIPS-02]: The MIPS VM allows writing to an `$rd` register for `mult`, `multu`, `div`, `divu`
+## [MIPS-02]: `_storeReg` should be zeroed for `mult`, `multu`, `div`, `divu`
 
 The `mult`, `multu`, `div`, `divu` instructions are only supposed to write to `HI`, `LO` special registers. However, since they are R-type instructions, they can still have a non-zero `rd` value. The MIPS VM do not zero out the `rd` value if the `rd` value for the `mult`, `multu`, `div`, `divu` instructions.
 
-Therefore if the `rd` value is non-zero, the register referenced by `rd` will be overwritten by `val` which will be 0, as seen in the snippet below.
+Therefore if the `rd` value is non-zero, the register referenced by `rd` which is passed into `_storeReg` variable will be overwritten by `val` which will be 0, as seen in the snippet below.
 
 [MIPS.sol#L442-L445](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L442-L445)
 ```solidity
@@ -39,18 +39,24 @@ Therefore if the `rd` value is non-zero, the register referenced by `rd` will be
 
 The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
 
-## [MIPS-03]: `(uint32) & 0xffFFffFF` bit-masking is redundant
+## [MIPS-03]: `rdReg` should be zeroed for `opcode >= 0x28`
 
-`execute` will return a `uint32` value. Therefore, performing `(uint32) & 0xffFFffFF` is redundant. The comment is also wrong and the bit-masking is not required.
+Similar to the previous finding, for `opcode >= 0x28` (store instructions), the `rdReg` should be zeroed because the store instructions should not write to any registers. Currently, the `rdReg = rtReg` for this branch.
 
-[MIPS.sol#L762-L763](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L762-L763)
+[MIPS.sol#L733-L739](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L733-L739)
 ```solidity
-            // ALU
-            uint32 val = execute(insn, rs, rt, mem) & 0xffFFffFF; // swr outputs 
-more than 4 bytes without the mask 
+            } else if (opcode >= 0x28 || opcode == 0x22 || opcode == 0x26) {
+                // store rt value with store
+                rt = state.registers[rtReg];
+
+                // store actual rt with lwl and lwr
+                rdReg = rtReg;
+            }
 ```
 
-## [MIPS-04] Redundant assignment of `rdReg = rtReg` 
+The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
+
+## [MIPS-04] Redundant assignment of `rdReg = rtReg`
 
 The code pointed by the arrow is redundant because `rdReg` was assigned `rtReg` earlier in the function and has not been changed in the function flow.
 
@@ -69,6 +75,17 @@ The code pointed by the arrow is redundant because `rdReg` was assigned `rtReg` 
                 // store actual rt with lwl and lwr
 =>              rdReg = rtReg; // REDUNDANT
             }
+```
+
+## [MIPS-05]: `(uint32) & 0xffFFffFF` bit-masking is redundant
+
+`execute` will return a `uint32` value. Therefore, performing `(uint32) & 0xffFFffFF` is redundant. The comment is also wrong and the bit-masking is not required.
+
+[MIPS.sol#L762-L763](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L762-L763)
+```solidity
+            // ALU
+            uint32 val = execute(insn, rs, rt, mem) & 0xffFFffFF; // swr outputs 
+more than 4 bytes without the mask 
 ```
 
 ## [FDG-01]: The new `CLOCK_EXTENSION` feature can be abused to extend the dispute game above 7 days.
