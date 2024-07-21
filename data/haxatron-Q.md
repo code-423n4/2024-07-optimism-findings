@@ -49,6 +49,28 @@ The only impact of this is that it deviates from the MIPS specification as the o
             uint32 val = execute(insn, rs, rt, mem) & 0xffFFffFF; // swr outputs 
 more than 4 bytes without the mask 
 ```
+
+## [MIPS-04] Redundant assignment of `rdReg = rtReg` 
+
+The code pointed by the arrow is redundant because `rdReg` was assigned `rtReg` earlier in the function and has not been changed in the function flow.
+
+[MIPS.sol#L738](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L738)
+```solidity
+            // R-type or I-type (stores rt)
+            rs = state.registers[(insn >> 21) & 0x1F];
+            uint32 rdReg = rtReg; 
+
+            if (opcode == 0 || opcode == 0x1c) { 
+            ...
+            } else if (opcode >= 0x28 || opcode == 0x22 || opcode == 0x26) {
+                // store rt value with store
+                rt = state.registers[rtReg];
+
+                // store actual rt with lwl and lwr
+=>              rdReg = rtReg; // REDUNDANT
+            }
+```
+
 ## [FDG-01]: The new `CLOCK_EXTENSION` feature can be abused to extend the dispute game above 7 days.
 
 The `CLOCK_EXTENSION` feature is a newly added feature that extends the remaining time left of a team to 3 hours if they have less than 3 hours left on the clock. 
