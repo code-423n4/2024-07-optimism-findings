@@ -25,7 +25,7 @@ Performing unsigned addition will lead to a result 0b1000, but according to MIPS
 
 ## [MIPS-02]: `_storeReg` should be zeroed for `mult`, `multu`, `div`, `divu`
 
-The `mult`, `multu`, `div`, `divu` instructions are only supposed to write to `HI`, `LO` special registers. However, since they are R-type instructions, they can still have a non-zero `rd` value. The MIPS VM do not zero out the `rd` value if the `rd` value for the `mult`, `multu`, `div`, `divu` instructions.
+The `mult`, `multu`, `div`, `divu` instructions are only supposed to write to `HI`, `LO` special registers. However, since they are R-type instructions, they can still have a non-zero `rd` value, though this would be an invalid instruction. The MIPS VM do not zero out the `rd` value if the `rd` value for the `mult`, `multu`, `div`, `divu` instructions.
 
 Therefore if the `rd` value is non-zero, the register referenced by `rd` which is passed into `_storeReg` variable will be overwritten by `val` which will be 0, as seen in the snippet below.
 
@@ -37,26 +37,9 @@ Therefore if the `rd` value is non-zero, the register referenced by `rd` which i
             }
 ```
 
-The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
+Since this would be an invalid instruction, the only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
 
-## [MIPS-03]: `rdReg` should be zeroed for `opcode >= 0x28`
-
-Similar to the previous finding, for `opcode >= 0x28` (store instructions), the `rdReg` should be zeroed because the store instructions should not write to any registers. Currently, the `rdReg = rtReg` for this branch.
-
-[MIPS.sol#L733-L739](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L733-L739)
-```solidity
-            } else if (opcode >= 0x28 || opcode == 0x22 || opcode == 0x26) {
-                // store rt value with store
-                rt = state.registers[rtReg];
-
-                // store actual rt with lwl and lwr
-                rdReg = rtReg;
-            }
-```
-
-The only impact of this is that it deviates from the MIPS specification as the offchain MIPS VM has the same bug. 
-
-## [MIPS-04] Redundant assignment of `rdReg = rtReg`
+## [MIPS-03] Redundant assignment of `rdReg = rtReg`
 
 The code pointed by the arrow is redundant because `rdReg` was assigned `rtReg` earlier in the function and has not been changed in the function flow.
 
@@ -77,7 +60,7 @@ The code pointed by the arrow is redundant because `rdReg` was assigned `rtReg` 
             }
 ```
 
-## [MIPS-05]: `(uint32) & 0xffFFffFF` bit-masking is redundant
+## [MIPS-04]: `(uint32) & 0xffFFffFF` bit-masking is redundant
 
 `execute` will return a `uint32` value. Therefore, performing `(uint32) & 0xffFFffFF` is redundant. The comment is also wrong and the bit-masking is not required.
 
