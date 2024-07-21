@@ -25,7 +25,9 @@ Performing unsigned addition will lead to a result 0b1000, but according to MIPS
 
 ## [MIPS-02]: The MIPS VM allows writing to an `$rd` register for `mult`, `multu`, `div`, `divu`
 
-The `mult`, `multu`, `div`, `divu` instructions are only supposed to write to `HI`, `LO` special registers. However, since they are R-type instructions, they can still have a non-zero `rd` value. The MIPS VM do not zero out the `rd` value if the `rd` value for the `mult`, `multu`, `div`, `divu` and therefore if the `rd` value is non-zero, the register referenced by `rd` will be overwritten by 0, as seen in the snippet below.
+The `mult`, `multu`, `div`, `divu` instructions are only supposed to write to `HI`, `LO` special registers. However, since they are R-type instructions, they can still have a non-zero `rd` value. The MIPS VM do not zero out the `rd` value if the `rd` value for the `mult`, `multu`, `div`, `divu` instructions.
+
+Therefore if the `rd` value is non-zero, the register referenced by `rd` will be overwritten by `val` which will be 0, as seen in the snippet below.
 
 [MIPS.sol#L442-L445](https://github.com/code-423n4/2024-07-optimism/blob/main/packages/contracts-bedrock/src/cannon/MIPS.sol#L442-L445)
 ```solidity
