@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "haxatron",
+  "risk": "2",
+  "title": "MIPS: `jalr` will not write to `r31` if `rd = 0`",
+  "issueId": 5,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/5"
+}
