@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "alexfilippov314",
+  "risk": "3",
+  "title": "An attacker can bypass the challenge period during LPP finalization",
+  "issueId": 13,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/13"
+}
