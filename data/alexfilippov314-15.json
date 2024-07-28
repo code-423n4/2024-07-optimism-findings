@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "alexfilippov314",
+  "risk": "3",
+  "title": "The `MIPS` doesn't implement `ADD`, `ADDI`, and `SUB` instructions correctly",
+  "issueId": 15,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/15"
+}
