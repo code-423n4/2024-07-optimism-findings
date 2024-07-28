@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "ether_sky",
+  "risk": "2",
+  "title": "The clock extension doesn't work correctly when the depth of the move is SPLIT_DEPTH - 1",
+  "issueId": 9,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/9"
+}
