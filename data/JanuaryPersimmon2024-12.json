@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "JanuaryPersimmon2024",
+  "risk": "3",
+  "title": "An invariant violation and revert in the FaultDisputeGame.step function",
+  "issueId": 12,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/12"
+}
