@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "alexfilippov314",
+  "risk": "2",
+  "title": "The lack of early reverts in `FDG.move` and `FDG.step` functions makes the protocol more centralized ",
+  "issueId": 17,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/17"
+}
