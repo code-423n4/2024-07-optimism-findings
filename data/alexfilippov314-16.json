@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "alexfilippov314",
+  "risk": "2",
+  "title": "The lack of early reverts in the `challengeLPP` and `challengeFirstLPP` functions increases the centralization of the protocol and makes whale attacks cheaper",
+  "issueId": 16,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/16"
+}
