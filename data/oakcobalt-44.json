@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "In some cases, the execution trace bisection root claim doesn't have enough time to generate the initial instruction trace.",
+  "issueId": 44,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/44"
+}
