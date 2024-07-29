@@ -153,8 +153,29 @@ This means that any step challenge that might consume the LPP from preimageOracl
 Recommendations:
 May consider add a check in PreimageOracle.sol's constructor to ensure CHALLENGE_PERIOD is a reasonable value relative to current `MAX_CLOCK_DURATION` of deployed FDGs.
 
+### Low-07 Risks of FDG deployment with 0 zero initial bonds, resulting in zero incentives for initial rootClaim challenge.
+**Instances(1)**
+It might be possible for user front-running setInitBond() with create(), creating a FDG with 0 zero bond. If setInitBond() is not called atomically with setImplementation(), setInitBond() tx can be front-runned with create().
 
+Current `create()` implementation doesn’t check whether `initBonds[_gameType] == 0`. When setInitBond() is front-run, 0 msg.value will pass the create() tx.
+```solidity
+//packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol
+  function create(
+    GameType _gameType,
+    Claim _rootClaim,
+    bytes calldata _extraData
+  ) external payable returns (IDisputeGame proxy_) {
+  ...
+      // If there is no implementation to clone for the given `GameType`, revert.
+    if (address(impl) == address(0)) revert NoImplementation(_gameType);
 
+    // If the required initialization bond is not met, revert.
+    if (msg.value != initBonds[_gameType]) revert IncorrectBondAmount();
+
+```
+Recommendations:
+(1) In create() adding a check to ensure `initBonds[_gameType]` ≠0 
+(2) Consider atomically setting initalBonds in setImplementation()
 
 
 
