@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "The clock extension is not applied correctly at `SPLIT_DEPTH - 1`",
+  "issueId": 30,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/30"
+}
