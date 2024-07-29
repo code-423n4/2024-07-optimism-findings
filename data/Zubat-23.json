@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "Zubat",
+  "risk": "2",
+  "title": "Extra time allocated for generating execution trace can be skipped",
+  "issueId": 23,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/23"
+}
