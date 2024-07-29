@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "oakcobalt",
+  "risk": "2",
+  "title": "In PreimageOracle, successful challengers of LPP might lose bond rewards due to missing checks.",
+  "issueId": 46,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/46"
+}
