@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "Zubat",
+  "risk": "3",
+  "title": "`CLOCK_EXTENSION` logic does not account for LPP `CHALLENGE_PERIOD`",
+  "issueId": 51,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/51"
+}
