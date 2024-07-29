@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "KupiaSec",
+  "risk": "3",
+  "title": "`MIPS` - `RDHWR`(opcode 0x1F, function code 0x3B) instruction is not handled",
+  "issueId": 40,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/40"
+}
