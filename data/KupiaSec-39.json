@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "KupiaSec",
+  "risk": "3",
+  "title": "Improper proof validation causes incorrect resolution of step",
+  "issueId": 39,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/39"
+}
