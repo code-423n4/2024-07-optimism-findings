@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "RadiantLabs",
+  "risk": "3",
+  "title": "LPP metadata can be altered after the challenge period is over to trick the VM to produce an incorrect state and cheat in the fault dispute game",
+  "issueId": 27,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/27"
+}
