@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "RadiantLabs",
+  "risk": "3",
+  "title": "The LPP challenge period can cause malicious and freeloader `MAX_DEPTH` claims to be uncounterable.",
+  "issueId": 29,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/29"
+}
