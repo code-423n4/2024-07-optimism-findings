@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "ArsenLupin",
+  "risk": "2",
+  "title": "During the staticcall to the precompile the revert() couldn't be catched, which could lead to unintended behaviour.",
+  "issueId": 25,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/25"
+}
