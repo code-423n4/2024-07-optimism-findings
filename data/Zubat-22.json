@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "Zubat",
+  "risk": "3",
+  "title": "L2 precompile calls can be impossible to reproduce on L1",
+  "issueId": 22,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/22"
+}
