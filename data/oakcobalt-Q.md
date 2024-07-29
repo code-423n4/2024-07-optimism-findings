@@ -80,9 +80,9 @@ Change the highlighted comment into `If the parent claim and the found post stat
 
 ### Low-03 Possible racing condition between step() and resolveClaim(), may result in dishonest claimant wins.
 **Instances(1)**
-Unlike move(), challengeDuration is not checked in step(). As a result, `step()` can be called at any time even after the game lock expires. 
+Unlike move(), challengeDuration is not checked in step(). As a result, [step()](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol#L234-L239) can be called at any time even after the game lock expires. 
 
-`resolveClaim()` can only be called after the challenger's game lock expires, which means that `step()` and `resolveClaim()` can both be called after the challenger's game lock expires. This opens up the risk of racing between step() and resolveClaim().
+[resolveClaim()](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol#L560) can only be called after the challenger's game lock expires, which means that `step()` and `resolveClaim()` can both be called after the challenger's game lock expires. This opens up the risk of racing between step() and resolveClaim().
 
 POC: 
 In the time window where both `step()` and `resolveClaim()` are allowed:
@@ -96,6 +96,62 @@ Recommendations:
 (1) Currently `resolveClaim()` can resolve a claim minimally CLOCK_EXTENSION after the target parent claim is posted. Consider adding additional delay for `resolveClaim()` when the parent claim is at max depth, to allow more time for `step()` challenges. 
 (2) In `step()`, add a check on the status of the `resolvedSubgames[_claimIndex]`, and if `resolvedSubgames[_claimIndex]== true`, revert `step()` because it has no effects but wasting honest challenger's gas.
 
+### Low-04 Invalid check in PreimageOracle::loadLocalData allows invalid `_partOffset` to be stored.
+**Instances(1)**
+In PreiamgeOracle::loadLocalData, there is an invalid check on `_partOffset`. The check allows `_partOffset` == `_size + 8`, which essentially allows empty `bytes32 part` to be stored as a value.
+
+Note that because `_size` is the actual length of data to be stored with 8 bytes of length prefix, a valid _partOffet should be strictly less than `_size + 8`.
+
+```solidity
+//packages/contracts-bedrock/src/cannon/PreimageOracle.sol
+    function loadLocalData(
+        uint256 _ident,
+        bytes32 _localContext,
+        bytes32 _word,
+        uint256 _size,
+        uint256 _partOffset
+    )
+        external
+        returns (bytes32 key_)
+    {
+        // Compute the localized key from the given local identifier.
+        key_ = PreimageKeyLib.localizeIdent(_ident, _localContext);
+
+        // Revert if the given part offset is not within bounds.
+|>      if (_partOffset > _size + 8 || _size > 32) {
+            revert PartOffsetOOB();
+        }
+...
+```
+(https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/cannon/PreimageOracle.sol#L134)
+
+Recommendations:
+Change the revert condition into `if (_partOffset >= _size + 8 || _size > 32) { //revert `.
+
+### Low-05 Risking of racing conditions between challengeLPP()(challengeFirstLPP()) and squeezeLPP()
+**Instances(1)**
+In PreimageOracle.sol, [challengeLPP()](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/cannon/PreimageOracle.sol#L568-L575) and [challengeFirstLPP()](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/cannon/PreimageOracle.sol#L609-L613) can be called at any time even after the challenge period has passed, because there is no check on the challenge period.
+
+At the same time `squeezeLPP()` can be called [after the challengPeriod](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/cannon/PreimageOracle.sol#L656-L657) to finalize a proposal.
+
+The above allows `challengeLPP()`(`challengeFirstLPP()`) and `squeezeLPP()` to be called at overlapping time window, which is vulnerable to racing between `challengeLPP()` and `squeezeLPP()`.
+
+Due to tx racing, a large preimage proposal might be resolved arbitrarily depending on front-running results. For example, if `squeezeLpp()` tx settles before `challengeLPP()` an otherwise invalid proposal will be finalized. Vice versa, if `challengeLPP()` settles first, the proposal will prove invalid. 
+
+In addition, `challengeLPP()` can still settle after `squeezeLpp()` tx, which means the honest challengerLPP() will only spend gas but have not real impact of the proposal status. The challenger will also lose the bond rewards.
+
+Recommendations:
+(1) In `squeezeLPP()`, when a proposal is finalized mark the proposalMetadata (`proposalMetadata[_claimant][_uuid]`)status as finalized. 
+(2) In `challengeLPP()` and `challengeFirstLPP()`, check whether the proposalMetadata status is finalized, if so, revert the tx.
+
+### Low-06 When oracle's CHALLENGE_PERIOD is greater than FDG's MAX_CLOCK_DURATION,  step challenge might be reverted due to unfinalized large preiamge proposals.
+**Instances(1)**
+An edge case is when CHALLENGE_PERIOD (preimageOracle) is greater than (MAX_CLOCK_DURATION), there is a chance large preiamge proposal [cannot be finalized in preimageOracle due to CHALLENGE_PERIOD hasn't passed](https://github.com/code-423n4/2024-07-optimism/blob/70556044e5e080930f686c4e5acde420104bb2c4/packages/contracts-bedrock/src/cannon/PreimageOracle.sol#L656-L657).
+
+This means that any step challenge that might consume the LPP from preimageOracle will cause revert, due to preimage not finalized in the oracle.
+
+Recommendations:
+May consider add a check in PreimageOracle.sol's constructor to ensure CHALLENGE_PERIOD is a reasonable value relative to current `MAX_CLOCK_DURATION` of deployed FDGs.
 
 
 
