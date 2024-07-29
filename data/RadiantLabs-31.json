@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "The LPP proposer may not be reimbursed their gas costs by the bonds at `MAX_DEPTH` because `step()` does not check if the LPP proposer is the one that called it",
+  "issueId": 31,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/31"
+}
