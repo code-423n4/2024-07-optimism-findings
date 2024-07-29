@@ -177,6 +177,15 @@ Recommendations:
 (1) In create() adding a check to ensure `initBonds[_gameType]` ≠0 
 (2) Consider atomically setting initalBonds in setImplementation()
 
+### Low-08 when DisputeGameFactory add a new gameType, current implementation doesn't allow to set anchorstate for the added new gameType. 
+**Instances(1)**
+DisputeGameFactory can add a new gameType through setImplementation(). However, if the new gameType hasn't been previously initialized in AnchorStateRegistry.sol. There is not way to add anchorState to the new gameType. 
+
+As a result, the newly add gameType cannot be used and will cause revert in DisputeGameFactory::create, due to FDG.initialize() revert.
+
+Recommendations:
+Consider add methods in DisputeGameFactory.sol to add new anchor states in AnchorStateRegistry.sol.
+
 
 
 
