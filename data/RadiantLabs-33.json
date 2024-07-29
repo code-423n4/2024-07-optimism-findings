@@ -1,0 +1,8 @@
+{
+  "contest": 400,
+  "handle": "RadiantLabs",
+  "risk": "2",
+  "title": "LPP challenges can be DoS'ed when frontrun via leaf addition",
+  "issueId": 33,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/33"
+}
