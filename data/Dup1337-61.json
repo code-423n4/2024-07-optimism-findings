@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Dup1337",
+  "risk": "3",
+  "title": "Manipulating preimage length leads to ability to disprove or DoS VM step execution",
+  "issueId": 61,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/61",
+  "originalIssueId": 110,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/110"
+}
