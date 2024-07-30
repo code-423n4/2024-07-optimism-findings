@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "bronze_pickaxe",
+  "risk": "2",
+  "title": "Dirty bits during loadPrecompiledPreimage breaks data integrity",
+  "issueId": 77,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/77",
+  "originalIssueId": 38,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/38"
+}
