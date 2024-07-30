@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "n4nika",
+  "risk": "3",
+  "title": "Attacker can modify previously verified entry in `PreimageOracle`",
+  "issueId": 100,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/100",
+  "originalIssueId": 67,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/67"
+}
