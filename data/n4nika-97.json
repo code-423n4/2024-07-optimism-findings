@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "n4nika",
+  "risk": "2",
+  "title": "A claim can be countered with the `step` function after the `rootClaim` has been resolved",
+  "issueId": 97,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/97",
+  "originalIssueId": 94,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/94"
+}
