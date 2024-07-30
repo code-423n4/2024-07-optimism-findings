@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "If disputes are uncontested at the same depth, then the bond recipient would be the dispute creator and not the game winner",
+  "issueId": 70,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/70",
+  "originalIssueId": 60,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/60"
+}
