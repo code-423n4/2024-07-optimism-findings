@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "zraxx",
+  "risk": "2",
+  "title": "Missing address check for instructions LH and LHU",
+  "issueId": 82,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/82",
+  "originalIssueId": 31,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/31"
+}
