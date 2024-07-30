@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "n4nika",
+  "risk": "3",
+  "title": "Loss of funds due to no checks whether `_claimedSize` is reached in `addLeavesLPP` in `PreimageOracle`",
+  "issueId": 56,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/56",
+  "originalIssueId": 127,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/127"
+}
