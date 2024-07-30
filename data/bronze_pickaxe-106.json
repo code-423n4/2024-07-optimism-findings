@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "bronze_pickaxe",
+  "risk": "2",
+  "title": "Stepping without risk opens up MEV",
+  "issueId": 106,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/106",
+  "originalIssueId": 39,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/39"
+}
