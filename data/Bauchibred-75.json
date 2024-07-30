@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Inability to challenge the first LLP due to a wrong check",
+  "issueId": 75,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/75",
+  "originalIssueId": 44,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/44"
+}
