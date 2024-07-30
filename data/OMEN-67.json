@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "OMEN",
+  "risk": "3",
+  "title": "Integer Overflow and Underflow Vulnerabilities in MIPS Add Instruction Emulation",
+  "issueId": 67,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/67",
+  "originalIssueId": 77,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/77"
+}
