@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "mansa11",
+  "risk": "3",
+  "title": "Break in logic implementation of `move`",
+  "issueId": 95,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/95",
+  "originalIssueId": 112,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/112"
+}
