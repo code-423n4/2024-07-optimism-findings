@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "niroh",
+  "risk": "3",
+  "title": "Attacker can steal any amount from the L1 bridge by submitting a game for a future L2Block that doesn't exist yet",
+  "issueId": 58,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/58",
+  "originalIssueId": 120,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/120"
+}
