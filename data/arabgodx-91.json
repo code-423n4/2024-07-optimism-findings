@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "arabgodx",
+  "risk": "2",
+  "title": "m-01 inconsistent requirement at the contract procedure at `DisputeGameFactory` contract arabgodx",
+  "issueId": 91,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/91",
+  "originalIssueId": 13,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/13"
+}
