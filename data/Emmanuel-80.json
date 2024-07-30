@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Emmanuel",
+  "risk": "3",
+  "title": "Game creator can create games whose L2 block cannot be challenged even when it contains absurd values",
+  "issueId": 80,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/80",
+  "originalIssueId": 35,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/35"
+}
