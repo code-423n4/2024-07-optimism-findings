@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Bauchibred",
+  "risk": "3",
+  "title": " Valid _moves_ would be rejected due to a wrong check",
+  "issueId": 101,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/101",
+  "originalIssueId": 65,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/65"
+}
