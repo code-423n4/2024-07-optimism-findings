@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "n4nika",
+  "risk": "2",
+  "title": "No checks for zero size in `loadLocalData`",
+  "issueId": 64,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/64",
+  "originalIssueId": 97,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/97"
+}
