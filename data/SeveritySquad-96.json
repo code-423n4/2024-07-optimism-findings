@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "SeveritySquad",
+  "risk": "3",
+  "title": "The incentive to challenge a malicious proposal is completely killed as the `challengeLPP()` & `challengeFirstLPP()` is vulnerable to frontruning attacks.",
+  "issueId": 96,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/96",
+  "originalIssueId": 95,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/95"
+}
