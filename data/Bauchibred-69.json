@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "The invariant of not exceeding `MAX_CLOCK_DURATION` when placing moves is wrongly protected against",
+  "issueId": 69,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/69",
+  "originalIssueId": 64,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/64"
+}
