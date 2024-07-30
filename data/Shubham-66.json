@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "Shubham",
+  "risk": "2",
+  "title": "Possible underflow if `CLOCK_EXTENSION` is greater than half the `MAX_CLOCK_DURATION`",
+  "issueId": 66,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/66",
+  "originalIssueId": 79,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/79"
+}
