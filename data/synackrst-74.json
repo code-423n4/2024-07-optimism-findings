@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "synackrst",
+  "risk": "2",
+  "title": "challengeRootL2Block can be called after the clock has expired",
+  "issueId": 74,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/74",
+  "originalIssueId": 45,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/45"
+}
