@@ -1,0 +1,10 @@
+{
+  "contest": 400,
+  "handle": "twcctop",
+  "risk": "2",
+  "title": "malicious user is possible front-run `challengeLPP`  to get funds",
+  "issueId": 104,
+  "issueUrl": "https://github.com/code-423n4/2024-07-optimism-findings/issues/104",
+  "originalIssueId": 49,
+  "originalIssueUrl": "https://github.com/code-423n4/2024-07-optimism-validation/issues/49"
+}
