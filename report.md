@@ -277,7 +277,7 @@ This will solve all of the scenarios above.
 > 
 > 1. For consistency in judging, the other issues deemed High either allowed the VM to act in a way that would allow incorrect output roots to be proven, or would allow valid claims to be challenged in a predictable way to allow intentionally stealing a large amount of bonds. This falls into the latter category, so will be upgraded to High.
 > 
-> 2. #26 does capture the root cause here, and gets most of the way there, but on its own would be judged as a Medium because it doesn't show how bonds could be stolen. I will be moving to partial credit, but because so much of the exploit was understood, I will award 75%.
+> 2. Issue #26 does capture the root cause here, and gets most of the way there, but on its own would be judged as a Medium because it doesn't show how bonds could be stolen. I will be moving to partial credit, but because so much of the exploit was understood, I will award 75%.
 
 *Note: For full discussion, see [here](https://github.com/code-423n4/2024-07-optimism-findings/issues/29).*
 
